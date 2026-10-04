@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- release-checkpoint.xml: durable release-doc state for SkyrimNet_Whipped. Per-change detail lives in CHANGELOG.md. -->
+<checkpoint>
+  <metadata>
+    <project>SkyrimNet_Whipped</project>
+    <summary>Standalone padded whip for SkyrimNet with per-part wound and healing tracking.</summary>
+    <repository_root>c:\Skyrim\dev\mods\SkyrimNet_Whip</repository_root>
+    <updated>2026-10-04</updated>
+    <base_tag>none (first release)</base_tag>
+    <next_version>0.1.0</next_version>
+    <version_status>Makefile, manifest.json, manifest.yaml, CMakeLists.txt and version.rc all 0.1.0 (check-version.py); info.json and FOMOD written by make release; no git tag yet</version_status>
+    <related_artifacts>
+      <artifact role="release rules">release-guide.md</artifact>
+      <artifact role="release skill">.claude/skills/release/SKILL.md</artifact>
+      <artifact role="agent policy">AGENTS.md</artifact>
+      <artifact role="changelog">CHANGELOG.md</artifact>
+      <artifact role="player changelog">CHANGELOG-user.md</artifact>
+      <artifact role="front door">README.md</artifact>
+    </related_artifacts>
+  </metadata>
+  <doc_files>
+    <file>README.md</file>
+    <file>AGENTS.md</file>
+    <file>CLAUDE.md</file>
+    <file>CHANGELOG.md</file>
+    <file>CHANGELOG-user.md</file>
+    <file>docs/authors/actions.md</file>
+    <file>docs/authors/prompts.md</file>
+    <file>docs/developers/papyrus.md</file>
+    <file>docs/developers/overlay.md</file>
+    <file>docs/reference/json-keys.md</file>
+    <file>docs/reference/papyrus-rules.md</file>
+    <file>release-checkpoint.xml</file>
+  </doc_files>
+</checkpoint>

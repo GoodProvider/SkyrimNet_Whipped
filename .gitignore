@@ -1,0 +1,12 @@
+versions
+dist
+core
+SpriggitCLI
+SpriggitCLI.zip
+SSEEdit Cache/
+Papyrus.0.log
+*.refcache
+
+SKSE_Source/build/
+SKSE_Source/install/
+FOMOD/

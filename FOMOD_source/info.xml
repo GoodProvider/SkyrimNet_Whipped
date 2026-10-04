@@ -1,0 +1,10 @@
+<fomod>
+  <!-- this file is generated from $source -->
+  <Name>$name</Name>
+  <Version>$version</Version>
+  <Description>Padded whip for SkyrimNet: lashes wound body parts that heal over time</Description>
+  <Author>Good Provider</Author>
+  <Groups>
+        <element>Optional</element>
+  </Groups>
+</fomod>

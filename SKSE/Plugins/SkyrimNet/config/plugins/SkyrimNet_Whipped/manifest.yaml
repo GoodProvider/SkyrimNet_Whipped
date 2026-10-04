@@ -1,0 +1,96 @@
+plugin:
+  name: "SkyrimNet_Whipped"
+  version: "0.1.0"
+  description: "Padded whip for SkyrimNet: welts, hit narration and a Whip_Target action"
+  icon: "🪢"
+
+schema:
+  fields:
+    - name: "NPC must already carry a whip"
+      path: "whip.action.require_whip"
+      type: "bool"
+      description: "On: only NPCs who already carry the padded whip can use the Whip_Target action. Off: any NPC can use it and is handed a whip for the lashing (taken back afterwards)."
+      defaultValue: true
+      category: "Action"
+
+    - name: "Add whip to player"
+      path: "whip.action.give_to_player"
+      type: "bool"
+      description: "On: if the player doesn't have the padded whip, add one to their inventory on load."
+      defaultValue: true
+      category: "Action"
+
+    - name: "Maximum lashes per action"
+      path: "whip.action.max_strikes"
+      type: "int"
+      description: "Most lashes the LLM can choose for one Whip_Target action. Changing it needs a save and reload to update the action."
+      min: 1
+      max: 20
+      defaultValue: 10
+      category: "Action"
+
+    - name: "Game hours per heal point"
+      path: "whip.healing.hours_per_point"
+      type: "float"
+      description: "Whip wounds lower health: every unhealed point (damage plus missing healing) holds health down, up to 90% of max health when every part is at maximum damage. A lash never takes health below 10% of max health, so whipping can't kill. Any healing heals wounds: health restored above the wounded level becomes wound points, one point at a time on a random wounded part (damage first, then healing). Each body part also drains one point of damage per this many game hours, then gains one healing point at the same rate until healed (11 points). The visible decal is controlled by the engine and can vanish earlier (cell change or reload)."
+      min: 0.1
+      max: 24
+      defaultValue: 1.0
+      category: "Healing"
+
+    - name: "Natural regen vs. whip wounds (%)"
+      path: "whip.healing.regen_rate"
+      type: "float"
+      description: "Natural health regeneration heals whip wounds at this percentage of its normal speed, so welts outlast the visible marks. Healing spells, staffs, scrolls and potions work at full speed. 100: regen heals wounds at normal speed."
+      min: 0
+      max: 100
+      defaultValue: 10.0
+      category: "Healing"
+
+    - name: "Add Healing Hands to player"
+      path: "whip.healing.give_healing_hands"
+      type: "bool"
+      description: "On: teach the player Healing Hands on load. Any healing source (spell, staff, scroll, potion) on a whipped actor is narrated as it starts, when the pain is gone, and when the wounds are fully healed or the healing stops. Healing by the player is always narrated; other healing follows the narration settings."
+      defaultValue: true
+      category: "Healing"
+
+    - name: "Narrate lashes"
+      path: "whip.narration.enabled"
+      type: "bool"
+      description: "Send Direct Narrations for whip hits and healing. The first hit on an actor with no open wounds is always narrated; later hits are combined into one narration when the speech queue is empty and the cooldown has passed. Off: the first hit and healing are recorded as events, other hits as short-lived events."
+      defaultValue: true
+      category: "Narration"
+
+    - name: "Narration cooldown (sec)"
+      path: "whip.narration.cooldown"
+      type: "float"
+      description: "Minimum seconds between narrations for the same actor; the speech queue must also be empty. Hits in between become short-lived events and are combined into the next narration. Healing narrations use the same gate and become events when it is closed."
+      min: 0
+      max: 120
+      defaultValue: 8.0
+      category: "Narration"
+
+    - name: "Narration max distance (m)"
+      path: "whip.narration.max_distance"
+      type: "float"
+      description: "Hits and healing farther than this from the player are not narrated: the first hit and healing are recorded as events, other hits as short-lived events."
+      min: 5
+      max: 100
+      defaultValue: 15.0
+      category: "Narration"
+
+    - name: "Lash event lifetime (sec)"
+      path: "whip.narration.event_ttl"
+      type: "float"
+      description: "How long the short-lived event for a hit that was not narrated stays in the scene context."
+      min: 5
+      max: 300
+      defaultValue: 30.0
+      category: "Narration"
+
+    - name: "Show whipping overlay"
+      path: "whip.overlay.enabled"
+      type: "bool"
+      description: "Show bars for each body part (head, body, arms, legs) of an actor while they are whipped or their wounds are healing. Red bars grow with damage and darken through the stages; once a part's damage is gone a yellow bar shows its healing, and the bar disappears when the part is healed. Needs PrismaUI."
+      defaultValue: true
+      category: "Overlay"
