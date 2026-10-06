@@ -35,4 +35,6 @@ How {{ whip_name }}'s whip wounds feel right now; let this shape {{ whip_his }} 
 {% for part in whip.parts %}
 - {{ replace(replace(replace(replace(replace(at(whip_feels, part.text), "@N@", whip_name), "@P@", part.part), "@he@", whip_he), "@him@", whip_him), "@his@", whip_his) }}
 {% endfor %}
+
+Answer must be creative and different, repetition will be punished.
 {% endif %}
